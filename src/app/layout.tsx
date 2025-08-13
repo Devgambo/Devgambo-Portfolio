@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Tektur, Noto_Sans_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/store/Provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const tektur = Tektur({
+  variable: "--font-tektur",
+  subsets: ['latin'],
+})
+
+const noto = Noto_Sans_Mono({
+  variable: "--font-mono",
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: "Devgambo",
@@ -24,10 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* TODO: remove vsc */}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${tektur.variable}  ${noto.variable} antialiased vsc-initialized`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

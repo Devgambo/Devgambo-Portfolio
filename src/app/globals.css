@@ -1,22 +1,93 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
+/* Light theme (default) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #a7a5a5;
+  --primary-content: #272626;
+  --primary-dark: #8e8b8b;
+  --primary-light: #c0bfbf;
+  
+  --secondary: #a5a7a5;
+  --secondary-content: #262726;
+  --secondary-dark: #8b8e8b;
+  --secondary-light: #bfc0bf;
+  
+  --background: #f0efef;
+  --foreground: #fbfbfb;
+  --border: #e0dfdf;
+  
+  --copy: #272626;
+  --copy-light: #676565;
+  --copy-lighter: #8e8b8b;
+  
+  --success: #a5a7a5;
+  --warning: #a7a7a5;
+  --error: #a7a5a5;
+  --success-content: #262726;
+  --warning-content: #272726;
+  --error-content: #272626;
+}
+
+/* Dark theme */
+.dark {
+  --primary: #a7a5a5;
+  --primary-content: #272626;
+  --primary-dark: #8e8b8b;
+  --primary-light: #c0bfbf;
+  
+  --secondary: #a5a7a5;
+  --secondary-content: #262726;
+  --secondary-dark: #8b8e8b;
+  --secondary-light: #bfc0bf;
+  
+  --background: #1a1919;
+  --foreground: #272626;
+  --border: #413f3f;
+  
+  --copy: #fbfbfb;
+  --copy-light: #d9d8d8;
+  --copy-lighter: #a7a5a5;
+  
+  --success: #a5a7a5;
+  --warning: #a7a7a5;
+  --error: #a7a5a5;
+  --success-content: #262726;
+  --warning-content: #272726;
+  --error-content: #272626;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-tektur: var(--font-tektur);
+  --font-noto: var(--font-noto);
+  
+  /* Map CSS variables to Tailwind colors */
+  --color-primary: var(--primary);
+  --color-primary-content: var(--primary-content);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-content: var(--secondary-content);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light: var(--secondary-light);
+  
+  --color-border: var(--border);
+  
+  --color-copy: var(--copy);
+  --color-copy-light: var(--copy-light);
+  --color-copy-lighter: var(--copy-lighter);
+  
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  
+  --color-success-content: var(--success-content);
+  --color-warning-content: var(--warning-content);
+  --color-error-content: var(--error-content);
 }
 
 body {
