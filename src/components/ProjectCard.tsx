@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, Eye, Github, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 // Define a type for the project data object
 export interface Project {
@@ -22,13 +23,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="bg-black-900 rounded-2xl border border-gray-700 p-6 max-w-md w-full shadow-2xl hover:border-gray-500 transition-colors duration-300">
       {/* Header with Preview Image */}
-      <div className="mb-6 relative overflow-hidden rounded-xl">
-        <img 
-          src={project.imageSrc} 
-          alt={`${project.title} Preview`} 
-          className="w-full h-48 object-cover bg-gray-800"
-        />
-      </div>
+              <div className="mb-6 relative overflow-hidden rounded-xl">
+          <Image 
+            src={project.imageSrc} 
+            alt={`${project.title} Preview`} 
+            width={400}
+            height={192}
+            className="w-full h-48 object-cover bg-gray-800"
+          />
+        </div>
 
       {/* Project Info */}
       <div className="mb-4">
@@ -40,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         </div>
         
-        <div className="font-tektur font-bold inline-block px-3 py-1 bg-blue-600/20 text-blue-300 rounded-full text-sm font-medium border border-blue-600/30">
+        <div className="font-tektur inline-block px-3 py-1 bg-blue-600/20 text-blue-300 rounded-full text-sm font-medium border border-blue-600/30">
           {project.category}
         </div>
       </div>

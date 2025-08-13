@@ -9,7 +9,6 @@ import Aurora from '../components/ui/Arora';
 import DarkVeil from '@/components/ui/DarkVeil';
 import ProjectCard, { Project } from '@/components/ProjectCard';
 import LetsConnect from '@/components/LetsConnect';
-import TextPressure from '@/components/ui/TextPressure';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +27,7 @@ export default function Home() {
 
   // The 'Project' interface must be imported or defined in the same file
   const codeSyncProject: Project = {
-    imageSrc: 'Projects/codeSync.png',
+    imageSrc: '/Projects/codeSync.png',
     title: 'CodeSync',
     year: 2025,
     category: 'Web Development',
@@ -38,7 +37,7 @@ export default function Home() {
     liveUrl: 'https://code-sync-sepia.vercel.app',
   };
   const hackVerseProject: Project = {
-    imageSrc: 'Projects/hackVerse.png',
+    imageSrc: '/Projects/hackVerse.png',
     title: 'HackVerse',
     year: 2025,
     category: 'Web Development',
@@ -135,9 +134,9 @@ export default function Home() {
                     </h3>
                   </div>
 
-                  <p className='font-noto text-lg md:text-xl text-copy-light leading-relaxed'>
-                    I'm a passionate and curious third-year Civil Engineering student with a growing love for full stack development and design. While my roots lie in structures and blueprints, my true excitement comes from building end-to-end digital experiences that solve real-world problems. I'm currently diving deep into the world of LLMs and Generative AI.
-                  </p>
+                                      <p className='font-noto text-lg md:text-xl text-copy-light leading-relaxed'>
+                      I&apos;m a passionate and curious third-year Civil Engineering student with a growing love for full stack development and design. While my roots lie in structures and blueprints, my true excitement comes from building end-to-end digital experiences that solve real-world problems. I&apos;m currently diving deep into the world of LLMs and Generative AI.
+                    </p>
                 </div>
               </div>
             </div>
@@ -192,10 +191,12 @@ export default function Home() {
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-black/20 rounded-lg flex items-center justify-center overflow-hidden backdrop-blur-sm border border-white/10">
-                      <img
+                      <Image
                         src="/onQuest.png"
                         alt="onQuest Logo"
-                        className="w-8 h-8 object-contain"
+                        width={32}
+                        height={32}
+                        className="object-contain"
                       />
                     </div>
                     <div>
@@ -254,10 +255,12 @@ export default function Home() {
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-black/20 rounded-lg flex items-center justify-center overflow-hidden backdrop-blur-sm border border-white/10">
-                      <img
+                      <Image
                         src="/nrl.png"
                         alt="nrl Logo"
-                        className="w-8 h-8 object-contain"
+                        width={32} // w-8 in Tailwind = 32px
+                        height={32}
+                        className="object-contain"
                       />
                     </div>
                     <div>
@@ -403,16 +406,16 @@ export default function Home() {
               WebkitTextFillColor: 'transparent',
             }}>
               <Link className='font-bold size-10 text-white/60' />
-              Let's Connect
+              Let&apos;s Connect
             </h2>
           </div>
         </div>
 
         <div>
-        <LetsConnect />
+          <LetsConnect />
         </div>
       </div>
-{/* 
+      {/* 
       <TextPressure
       text="Devgambo"
       flex={true}
