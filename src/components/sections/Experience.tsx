@@ -15,7 +15,7 @@ const experiences = [
     logoAlt: 'NITK Logo',
   },
   {
-    type: 'Work',
+    type: 'work',
     title: 'Frontend Developer',
     company: 'onQuest',
     location: 'Remote',

@@ -1,27 +1,6 @@
 import { SparklesIcon } from 'lucide-react';
-import ProjectCard, { Project } from '@/components/ProjectCard';
-
-const codeSyncProject: Project = {
-  imageSrc: '/Projects/codeSync.png',
-  title: 'CodeSync',
-  year: 2025,
-  category: 'Web Development',
-  description: 'CODESYNC is a real-time collaborative coding environment with an integrated whiteboard and AI chat. The project focuses on enhancing developer productivity...',
-  technologies: ['Next.js', 'Convex', 'Liveblocks', 'Gemini API'],
-  githubUrl: 'https://github.com/Devgambo/CodeSync',
-  liveUrl: 'https://code-sync-sepia.vercel.app',
-};
-
-const hackVerseProject: Project = {
-  imageSrc: '/Projects/hackVerse.png',
-  title: 'HackVerse',
-  year: 2025,
-  category: 'Web Development',
-  description: 'Hackverse is a scalable and secure hackathon hosting platform that demonstrates my proficiency in full-stack development and adherence to SOLID principles...',
-  technologies: ['Next.js', 'NestJs', 'PostgreSQL (Neon)', 'RTK Query'],
-  githubUrl: 'https://github.com/adithya-adee/hackverse',
-  liveUrl: 'https://hackverse-sandy.vercel.app',
-};
+import ProjectCard from '@/components/ProjectCard';
+import { projects } from '@/data/projects';
 
 
 
@@ -51,13 +30,12 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 justify-items-center'>
-          <div className='w-full max-w-md transform transition-all duration-300 hover:scale-[1.02]'>
-            <ProjectCard project={codeSyncProject} />
-          </div>
-          <div className='w-full max-w-md transform transition-all duration-300 hover:scale-[1.02]'>
-            <ProjectCard project={hackVerseProject} />
-          </div>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 auto-rows-fr'>
+          {projects.map((project) => (
+            <div key={project.id} className='w-full max-w-md mx-auto flex'>
+              <ProjectCard project={project} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

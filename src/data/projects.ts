@@ -1,0 +1,81 @@
+import { Project } from '@/components/ProjectCard';
+
+export const projects: Project[] = [
+  {
+    id: 'codesync',
+    imageSrc: '/Projects/codeSync.png',
+    title: 'CodeSync',
+    year: 2025,
+    category: 'Web Development',
+    description: 'CODESYNC is a real-time collaborative coding environment with an integrated whiteboard and AI chat. The project focuses on enhancing developer productivity...',
+    fullDescription: 'CODESYNC is a real-time collaborative coding environment powered by AI that allows developers to write, share, and edit code together. It features a shared file system, a collaborative code editor with live cursors, an integrated whiteboard for brainstorming, and an AI chat powered by Gemini API. The platform focuses on enhancing developer productivity through seamless collaboration and intelligent assistance.',
+    technologies: ['Next.js', 'Convex', 'Liveblocks', 'Gemini API'],
+    githubUrl: 'https://github.com/Devgambo/CodeSync',
+    liveUrl: 'https://code-sync-sepia.vercel.app',
+  },
+  {
+    id: 'hackverse',
+    imageSrc: '/Projects/hackVerse.png',
+    title: 'HackVerse',
+    year: 2025,
+    category: 'Web Development',
+    description: 'Hackverse is a scalable and secure hackathon hosting platform that demonstrates my proficiency in full-stack development and adherence to SOLID principles...',
+    fullDescription: 'Hackverse is a comprehensive platform that streamlines hackathon management, covering event creation, registration, team formation, project submission, and judging for a smooth experience for both organizers and participants. Built with Next.js for the frontend and NestJS for the backend, it uses PostgreSQL (Neon) for data persistence and RTK Query for efficient state management. The platform demonstrates proficiency in full-stack development and adherence to SOLID principles.',
+    technologies: ['Next.js', 'NestJs', 'PostgreSQL (Neon)', 'RTK Query'],
+    githubUrl: 'https://github.com/adithya-adee/hackverse',
+    liveUrl: 'https://hackverse-sandy.vercel.app',
+  },
+  {
+    id: 'fitstake',
+    imageSrc: '/Projects/fitStake.jpg',
+    title: 'FitStake',
+    year: 2024,
+    category: 'Web Development',
+    description: 'FitStake is a fitness tracking and staking platform that gamifies fitness goals. Users can stake on their fitness commitments and track their progress with an engaging interface...',
+    fullDescription: 'FitStake is an innovative fitness tracking and staking platform that gamifies fitness goals by allowing users to stake on their fitness commitments. The platform features an engaging interface where users can set fitness goals, track their progress, and earn rewards for meeting their commitments. Built with JavaScript, React, Node.js, and MongoDB, it provides a comprehensive solution for motivation and accountability in fitness journeys.',
+    technologies: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
+    githubUrl: 'https://github.com/Kushagra1122/fitStake',
+    liveUrl: 'https://github.com/Kushagra1122/fitStake',
+  },
+  {
+    id: 'ai-fitness-coach',
+    imageSrc: '/Projects/aiFitnessCoach.png',
+    title: 'AI Fitness Coach',
+    year: 2024,
+    category: 'AI & Machine Learning',
+    description: 'An AI-powered fitness coaching application that provides personalized workout plans, nutrition advice, and progress tracking...',
+    fullDescription: 'An AI-powered fitness coaching application that provides personalized workout plans, nutrition advice, and progress tracking. The system leverages advanced AI algorithms to create customized fitness routines based on user goals, preferences, equipment availability, and physical limitations. Built with Python for the backend AI engine, React for the frontend, and FastAPI for the API layer, it integrates with OpenAI API to deliver intelligent, adaptive fitness guidance.',
+    technologies: ['Python', 'React', 'FastAPI', 'OpenAI API', 'Machine Learning'],
+    githubUrl: 'https://github.com/Devgambo',
+    liveUrl: 'https://github.com/Devgambo',
+  },
+  {
+    id: 'ai-compliance-checker',
+    imageSrc: '/Projects/aiComplianceChecker.png',
+    title: 'AI Code Compliance Checker',
+    year: 2024,
+    category: 'AI & Civil Engineering',
+    description: 'Automate compliance checks for structural design drawings (PDFs). The system parses drawings, extracts key parameters, and generates AI-assisted reports aligned with Indian Standards...',
+    fullDescription: 'Automate compliance checks for structural design drawings (PDFs). The system parses drawings, extracts key parameters, and generates AI-assisted reports aligned with Indian Standards (e.g., IS 456). This innovative tool combines computer vision techniques with AI to analyze structural design drawings, extract critical design parameters, and automatically verify compliance with Indian building codes. Built using Python, Jupyter Notebooks, and advanced PDF processing libraries, it significantly reduces manual review time and ensures accuracy in structural compliance verification.',
+    technologies: ['Python', 'Jupyter Notebook', 'Computer Vision', 'PDF Processing', 'AI/ML'],
+    githubUrl: 'https://github.com/Devgambo/Automated-IS-Code-Compliance-Checker',
+    liveUrl: 'https://github.com/Devgambo/Automated-IS-Code-Compliance-Checker',
+  },
+  {
+    id: 'shoreline-analysis',
+    imageSrc: '/Projects/shoreLineAnalysis.png',
+    title: 'Shore Line Analysis',
+    year: 2024,
+    category: 'Civil Engineering & GIS',
+    description: 'A comprehensive shoreline analysis tool for coastal monitoring and erosion assessment. Processes satellite imagery and GIS data to track shoreline changes...',
+    fullDescription: 'A comprehensive shoreline analysis tool for coastal monitoring and erosion assessment. Processes satellite imagery and GIS data to track shoreline changes, analyze coastal dynamics, and generate detailed reports. This project combines remote sensing technologies with GIS analysis to monitor coastal erosion, track shoreline changes over time, and provide valuable insights for coastal management. Built with Python, it integrates various satellite imagery sources and GIS tools to deliver accurate and actionable coastal analysis reports.',
+    technologies: ['Python', 'GIS', 'Satellite Imagery', 'Data Analysis', 'Remote Sensing'],
+    githubUrl: 'https://github.com/Devgambo',
+    liveUrl: 'https://github.com/Devgambo',
+  },
+];
+
+export const getProjectById = (id: string): Project | undefined => {
+  return projects.find(project => project.id === id);
+};
+
