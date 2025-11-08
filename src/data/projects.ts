@@ -47,7 +47,7 @@ export const projects: Project[] = [
     fullDescription: 'An AI-powered fitness coaching application that provides personalized workout plans, nutrition advice, and progress tracking. The system leverages advanced AI algorithms to create customized fitness routines based on user goals, preferences, equipment availability, and physical limitations. Built with Python for the backend AI engine, React for the frontend, and FastAPI for the API layer, it integrates with OpenAI API to deliver intelligent, adaptive fitness guidance.',
     technologies: ['Python', 'React', 'FastAPI', 'OpenAI API', 'Machine Learning'],
     githubUrl: 'https://github.com/Devgambo',
-    liveUrl: 'https://github.com/Devgambo',
+    liveUrl: 'https://ai-fitness-coach-jade.vercel.app/',
   },
   {
     id: 'ai-compliance-checker',

@@ -1,6 +1,4 @@
-import { MessageCircle, MessageSquare } from 'lucide-react';
 import LetsConnect from '@/components/sections/LetsConnect';
-import TextPressure from '../ui/TextPressure';
 
 export default function Contact() {
   return (

@@ -143,7 +143,7 @@ export default function Intro() {
             {/* name  */}
             <div className='flex gap-2 items-center justify-start text-white text-2xl text-center font-extrabold '>
               <span className='text-5xl text-white font-audiowide'>
-                Hi! I'm
+                Hi! I&apos;m
               </span>
               <span className='text-8xl pl-4 py-4 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-yesteryear'>
                 Priyanshu
