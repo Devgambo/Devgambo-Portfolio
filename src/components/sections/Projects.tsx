@@ -12,7 +12,7 @@ export default function Projects() {
       <div className='max-w-6xl mx-auto w-full'>
         {/* Section Header */}
         <div className='text-center mb-16'>
-          <h2 className='font-yesteryear text-3xl md:text-4xl lg:text-5xl font-bold mb-4' style={{
+          <h2 className='py-6 px-2 font-yesteryear text-3xl md:text-4xl lg:text-5xl font-bold mb-4' style={{
             backgroundImage: 'linear-gradient(to right, #ec4899, #8b5cf6)',
             WebkitBackgroundClip: 'text',
             color: 'transparent',

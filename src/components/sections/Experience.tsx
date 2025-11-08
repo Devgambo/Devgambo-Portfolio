@@ -15,6 +15,18 @@ const experiences = [
     logoAlt: 'NITK Logo',
   },
   {
+    type: 'Education',
+    title: 'Minors Degree in Information Technology',
+    company: 'NITK Surathkal',
+    location: 'On site',
+    period: 'July 2024 - May 2027',
+    description: 'I am currently pursuing my Minors Degree in Information Technology at NITK Surathkal and I am in my first year of my degree.',
+    technologies: ['Web Technologies', 'Programming', 'Data Structures', 'DBMS'],
+    link: 'https://www.nitk.ac.in/',
+    logo: '/nitk.png',
+    logoAlt: 'NITK Logo',
+  },
+  {
     type: 'work',
     title: 'Frontend Developer',
     company: 'onQuest',
@@ -34,7 +46,7 @@ export default function Experience() {
       <div className='max-w-6xl mx-auto w-full'>
         {/* Section Header */}
         <div className='text-center mb-16'>
-          <h2 className='font-yesteryear text-3xl md:text-4xl lg:text-5xl font-bold mb-4' style={{
+          <h2 className='py-6 px-2 font-yesteryear text-3xl md:text-4xl lg:text-5xl font-bold mb-4' style={{
             backgroundImage: 'linear-gradient(to right, #ec4899, #8b5cf6)',
             WebkitBackgroundClip: 'text',
             color: 'transparent',
