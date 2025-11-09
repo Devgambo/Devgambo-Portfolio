@@ -128,7 +128,7 @@ export default function Intro() {
           </div>
 
           {/* show resume button */}
-          <div className='border-[3px]  flex justify-center items-center'>
+          <div className='flex justify-center items-center'>
             <a href="https://drive.google.com/file/d/15MU3siMhR71ghGNBcyA0O0w-HDTq-8OR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className=' border-white rounded-2xl py-2 px-4 text-white/80 hover:text-white transition-colors flex gap-2 justify-center items-center font-audiowide text-sm md:text-base font-medium'>See Resume <ExternalLink className='w-3 h-3 md:w-4 md:h-4'/> </a>
           </div>
 
@@ -145,7 +145,7 @@ export default function Intro() {
               <span className='text-3xl md:text-5xl text-white font-audiowide'>
                 Hi! I&apos;m
               </span>
-              <span className='text-5xl md:text-8xl md:pl-4 py-2 md:py-4 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-yesteryear'>
+              <span className='text-5xl md:text-8xl px-2 md:pl-4 py-2 md:py-4 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-yesteryear'>
                 Priyanshu
               </span>
             </div>

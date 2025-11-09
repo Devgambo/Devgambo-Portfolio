@@ -30,7 +30,7 @@ export default function Home() {
     <div className='bg-black relative min-h-screen'>
       <VerticalNavbar />
       <div className="relative">
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden md:h-full h-[50%]">
           <Aurora
             colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
             blend={0.5}
