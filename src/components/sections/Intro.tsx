@@ -1,4 +1,4 @@
-import { ChevronDown, Code, Database, Globe, Laptop2, Brain, Box, ArrowDown } from 'lucide-react';
+import { ChevronDown, Code, Database, Globe, Laptop2, Brain, Box, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiJavascript, SiPython, SiExpress, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiCplusplus, SiRust, SiNestjs, SiSocketdotio, SiSolidity } from 'react-icons/si';
 import LogoLoop from '../ui/LogoLoop';
@@ -127,9 +127,9 @@ export default function Intro() {
             </div>
           </div>
 
-          {/* down load resume button */}
+          {/* show resume button */}
           <div className='border-[3px]  flex justify-center items-center'>
-            <a href="/resume.pdf" download="resume.pdf" className=' border-white rounded-2xl py-2 px-4 text-white/80 hover:text-white transition-colors flex gap-2 justify-center items-center font-audiowide font-medium'>Download Resume <ArrowDown className='w-4 h-4'/> </a>
+            <a href="https://drive.google.com/file/d/15MU3siMhR71ghGNBcyA0O0w-HDTq-8OR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className=' border-white rounded-2xl py-2 px-4 text-white/80 hover:text-white transition-colors flex gap-2 justify-center items-center font-audiowide font-medium'>See Resume <ExternalLink className='w-4 h-4'/> </a>
           </div>
 
 

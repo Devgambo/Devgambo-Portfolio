@@ -1,4 +1,7 @@
-import { SparklesIcon } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { SparklesIcon, ChevronDown, ChevronUp } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/data/projects';
 
@@ -7,6 +10,10 @@ import { projects } from '@/data/projects';
 
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+  const hasMoreProjects = projects.length > 3;
+
   return (
     <div id="projects" className='relative z-10 flex flex-col justify-center items-center px-4 py-20'>
       <div className='max-w-6xl mx-auto w-full'>
@@ -31,12 +38,34 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 auto-rows-fr'>
-          {projects.map((project) => (
+          {displayedProjects.map((project) => (
             <div key={project.id} className='w-full max-w-md mx-auto flex'>
               <ProjectCard project={project} />
             </div>
           ))}
         </div>
+
+        {/* Show More/Less Button */}
+        {hasMoreProjects && (
+          <div className='flex justify-center mt-12'>
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className='flex items-center gap-2 px-6 py-3 font-audiowide text-sm md:text-base bg-gradient-to-r from-pink-600/20 to-purple-600/20 hover:from-pink-600/30 hover:to-purple-600/30 text-pink-300 hover:text-pink-200 rounded-lg border border-pink-500/30 hover:border-pink-500/50 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-pink-500/20'
+            >
+              {showAll ? (
+                <>
+                  <span>Show Less</span>
+                  <ChevronUp className='w-4 h-4' />
+                </>
+              ) : (
+                <>
+                  <span>Show More</span>
+                  <ChevronDown className='w-4 h-4' />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

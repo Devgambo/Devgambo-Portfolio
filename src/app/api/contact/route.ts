@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const RECIPIENT_EMAIL = 'devgambo.work@gmail.com';
+import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email, message } = body;
+    const { name, email, message } = await request.json();
 
     // Validate input
     if (!name || !email || !message) {
@@ -24,24 +22,37 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email using FormSubmit.co
-    const formData = new URLSearchParams();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('message', message);
-    formData.append('_subject', `New Contact Form Message from ${name}`);
+    // Check if environment variables are set
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Email credentials not configured');
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact the administrator.' },
+        { status: 500 }
+      );
+    }
 
-    const emailResponse = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+    // Configure email transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
-      body: formData.toString(),
     });
 
-    if (!emailResponse.ok) {
-      throw new Error('Failed to send email');
-    }
+    // Send email
+    await transporter.sendMail({
+      from: email,
+      to: process.env.EMAIL_USER,
+      subject: `New Contact from ${name}`,
+      text: message,
+      html: `<p><strong>Name:</strong> ${name}</p>
+             <p><strong>Email:</strong> ${email}</p>
+             <p><strong>Message:</strong></p>
+             <p>${message}</p>`,
+    });
+
+    console.log('Email sent successfully');
 
     return NextResponse.json(
       { message: 'Message sent successfully!' },

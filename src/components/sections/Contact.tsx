@@ -18,9 +18,6 @@ export default function Contact() {
       <div>
         <LetsConnect />
       </div>
-      <div>
-        <p className='font-monsieurladoulaise text-6xl text-pink-900 absolute bottom-25 left-150 rotate-[-10deg] '>Priyanshu</p>
-      </div>
     </div>
   );
 }

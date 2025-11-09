@@ -100,8 +100,10 @@ const LetsConnect: React.FC = () => {
 
   return (
     <div className="relative py-12 px-4">
+      {/* Signature at corner */}
+      <p className='font-monsieurladoulaise text-6xl text-pink-900 absolute bottom-0 right-10 rotate-[-30deg] opacity-100 pointer-events-none z-0'>Priyanshu</p>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
 
           {/* Left Column: Contact Info */}
