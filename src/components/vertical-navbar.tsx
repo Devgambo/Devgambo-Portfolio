@@ -63,7 +63,7 @@ export default function VerticalNavbar() {
   }, [])
 
   return (
-    <div className="fixed top-8 right-8 z-50">
+    <div className="fixed top-8 right-8 z-50 hidden md:block">
       <div className="flex gap-6 items-start">
         {/* Timeline Line Container */}
         <div className="relative top-6 flex flex-col items-center">

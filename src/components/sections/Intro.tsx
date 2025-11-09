@@ -55,19 +55,19 @@ const techLogos = [
 
 export default function Intro() {
   return (
-    <div id="about" className='relative z-10 flex flex-col justify-center items-center min-h-screen px-4'>
+    <div id="about" className='relative z-10 flex flex-col justify-center items-center min-h-screen px-4 py-8 md:py-0'>
       <div className='grid lg:grid-cols-12 md:grid-cols-8 gap-8 grid-cols-1 max-w-7xl mx-auto w-full'>
 
         {/* Left Column - Profile & Stats */}
         <div className='lg:col-span-5 md:col-span-4 flex flex-col space-y-8'>
 
           {/* Profile Card */}
-          <div className='p-8 mt-10'>
+          <div className='p-4 md:p-8 mt-4 md:mt-10'>
 
             {/* Profile Image with Color Filter */}
             <div className='flex flex-col items-center space-y-6'>
               <div className='group relative'>
-                <div className='w-64 h-64 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_40px_15px_rgba(59,130,246,0.3)] transition-all duration-700 group-hover:shadow-primary/50 group-hover:border-primary relative'>
+                <div className='w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_40px_15px_rgba(59,130,246,0.3)] transition-all duration-700 group-hover:shadow-primary/50 group-hover:border-primary relative'>
                   <Image
                     width={256}
                     height={256}
@@ -78,7 +78,7 @@ export default function Intro() {
                 </div>
 
                 {/* Floating badge */}
-                <div className='flex items-center gap-2 absolute -bottom-3 -right-3 bg-green-500/10 backdrop-blur-xl text-green-100 px-4 py-2 rounded-full text-sm font-semibold border border-green-400/20 shadow-lg'>
+                <div className='flex items-center gap-2 absolute -bottom-3 -right-3 bg-green-500/10 backdrop-blur-xl text-green-100 px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-green-400/20 shadow-lg'>
                   <div className='w-2 h-2 bg-green-400 rounded-full animate-pulse'></div>
                   <span>Available</span>
                 </div>
@@ -88,7 +88,7 @@ export default function Intro() {
               {/* Social Links */}
 
               <div className='relative flex space-x-3'>
-                <h2 className='absolute flex left-0 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent text-sm font-extrabold font-audiowide'>
+                <h2 className='absolute flex left-0 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent text-xs md:text-sm font-extrabold font-audiowide'>
                   Connect with me
                 </h2>
                 {socialLinks.map((link, index) => {
@@ -97,10 +97,10 @@ export default function Intro() {
                     <a
                       key={index}
                       href={link.href}
-                      className='mt-6 p-3 rounded-xl bg-black/40 border border-white/10 text-white  transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm'
+                      className='mt-6 p-2 md:p-3 rounded-xl bg-black/40 border border-white/10 text-white  transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm'
                       aria-label={link.label}
                     >
-                      <IconComponent className='w-5 h-5' />
+                      <IconComponent className='w-4 h-4 md:w-5 md:h-5' />
                     </a>
                   );
                 })}
@@ -129,7 +129,7 @@ export default function Intro() {
 
           {/* show resume button */}
           <div className='border-[3px]  flex justify-center items-center'>
-            <a href="https://drive.google.com/file/d/15MU3siMhR71ghGNBcyA0O0w-HDTq-8OR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className=' border-white rounded-2xl py-2 px-4 text-white/80 hover:text-white transition-colors flex gap-2 justify-center items-center font-audiowide font-medium'>See Resume <ExternalLink className='w-4 h-4'/> </a>
+            <a href="https://drive.google.com/file/d/15MU3siMhR71ghGNBcyA0O0w-HDTq-8OR/view?usp=sharing" target="_blank" rel="noopener noreferrer" className=' border-white rounded-2xl py-2 px-4 text-white/80 hover:text-white transition-colors flex gap-2 justify-center items-center font-audiowide text-sm md:text-base font-medium'>See Resume <ExternalLink className='w-3 h-3 md:w-4 md:h-4'/> </a>
           </div>
 
 
@@ -138,28 +138,28 @@ export default function Intro() {
 
         {/* Right Column - About Section */}
         <div className='lg:col-span-6 md:col-span-4 flex flex-col justify-center'>
-          <div className='p-8 rounded-3xl'>
+          <div className='p-4 md:p-8 rounded-3xl'>
 
             {/* name  */}
-            <div className='flex gap-2 items-center justify-start text-white text-2xl text-center font-extrabold '>
-              <span className='text-5xl text-white font-audiowide'>
+            <div className='flex flex-col md:flex-row gap-2 items-center md:items-center justify-center md:justify-start text-white text-xl md:text-2xl text-center font-extrabold '>
+              <span className='text-3xl md:text-5xl text-white font-audiowide'>
                 Hi! I&apos;m
               </span>
-              <span className='text-8xl pl-4 py-4 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-yesteryear'>
+              <span className='text-5xl md:text-8xl md:pl-4 py-2 md:py-4 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent font-yesteryear'>
                 Priyanshu
               </span>
             </div>
 
 
-            <div className='space-y-6 mt-2'>
+            <div className='space-y-4 md:space-y-6 mt-2'>
               {/* Main Content */}
-              <div className='space-y-6'>
-                <p className='text-2xl text-white/80 leading-relaxed font-audiowide'>
+              <div className='space-y-4 md:space-y-6'>
+                <p className='text-base md:text-2xl text-white/80 leading-relaxed font-audiowide'>
                   Passionate about turning ideas into seamless digital experiences that make an impact.
                 </p>
 
-                <div className='relative mt-8 flex gap-2 items-start'>
-                  <div className='text-2xl font-audiowide text-white/90 font-medium min-h-[2rem]'>
+                <div className='relative mt-4 md:mt-8 flex gap-2 items-start'>
+                  <div className='text-base md:text-2xl font-audiowide text-white/90 font-medium min-h-[2rem]'>
                     <Typewriter
                       options={{
                         strings: iaminto,
@@ -175,15 +175,15 @@ export default function Intro() {
 
 
                 {/* Quick Stats  */}
-                <div className='p-6'>
-                  <div className='grid grid-cols-2 gap-4'>
+                <div className='p-4 md:p-6'>
+                  <div className='grid grid-cols-2 gap-3 md:gap-4'>
                     {stats.map((stat, index) => (
                       <div
                         key={index}
-                        className='flex flex-col items-center p-4 rounded-2xl bg-gradient-to-br from-black/2 to-black/10 border-[5px] border-white/5 hover:border-primary/30 transition-all duration-300 group'
+                        className='flex flex-col items-center p-3 md:p-4 rounded-2xl bg-gradient-to-br from-black/2 to-black/10 border-[3px] md:border-[5px] border-white/5 hover:border-primary/30 transition-all duration-300 group'
                       >
-                        <stat.icon className='w-8 h-8 text-white mb-2 group-hover:scale-110 transition-transform duration-300' />
-                        <div className='text-2xl font-bold text-white font-audiowide'>{stat.value}</div>
+                        <stat.icon className='w-6 h-6 md:w-8 md:h-8 text-white mb-2 group-hover:scale-110 transition-transform duration-300' />
+                        <div className='text-xl md:text-2xl font-bold text-white font-audiowide'>{stat.value}</div>
                         <div className='text-xs text-white/60 text-center font-audiowide'>{stat.label}</div>
                       </div>
                     ))}

@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <div className='bg-black relative'>
+    <div className='bg-black relative min-h-screen'>
       <VerticalNavbar />
       <div className="relative">
         <div className="absolute inset-0 overflow-hidden">
@@ -52,7 +52,7 @@ export default function Home() {
       <SectionDivider />
       <Contact />
 
-      <div className='absolute inset-0 bottom-0' style={{ position: 'relative', height: '300px' }}>
+      <div className='bg-black relative hidden md:block' style={{ height: '350px', marginTop: '-1px' }}>
         <TextPressure
           text="Devgambo!"
           flex={true}
@@ -66,6 +66,7 @@ export default function Home() {
           minFontSize={36}
         />
       </div>
+      
     </div>
   );
 }

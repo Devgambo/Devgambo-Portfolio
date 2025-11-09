@@ -2,10 +2,10 @@ import LetsConnect from '@/components/sections/LetsConnect';
 
 export default function Contact() {
   return (
-    <div id="contact" className='relative z-10 w-full flex-col justify-center items-center px-4 pt-20'>
+    <div id="contact" className='relative z-10 w-full flex-col justify-center items-center px-4 pt-12 md:pt-20'>
       <div className='max-w-6xl mx-auto w-full'>
-        <div className='text-center mb-16'>
-          <h2 className='py-2 px-4 flex items-center justify-center gap-2 font-yesteryear text-3xl md:text-4xl lg:text-5xl font-bold mb-4' style={{
+        <div className='text-center mb-8 md:mb-16'>
+          <h2 className='py-2 px-4 flex items-center justify-center gap-2 font-yesteryear text-2xl md:text-4xl lg:text-5xl font-bold mb-4' style={{
             backgroundImage: 'linear-gradient(to right, #ec4899, #8b5cf6)',
             WebkitBackgroundClip: 'text',
             color: 'transparent',
