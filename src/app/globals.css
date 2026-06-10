@@ -1,189 +1,195 @@
 @import "tailwindcss";
-/* @import "tw-animate-css"; */
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Remove default margins and padding */
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #000000;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-/* Light theme (default) */
+/* Theme tokens — off-white + Daredevil red. .dark = Hell's Kitchen at night. */
 :root {
-  --primary: oklch(0.205 0 0);
-  --primary-content: #272626;
-  --primary-dark: #8e8b8b;
-  --primary-light: #c0bfbf;
-
-  --secondary: oklch(0.97 0 0);
-  --secondary-content: #262726;
-  --secondary-dark: #8b8e8b;
-  --secondary-light: #bfc0bf;
-  --border: oklch(0.922 0 0);
-
-  --copy: #272626;
-  --copy-light: #676565;
-  --copy-lighter: #8e8b8b;
-
-  --success: #a5a7a5;
-  --warning: #a7a7a5;
-  --error: #a7a5a5;
-  --success-content: #262726;
-  --warning-content: #272726;
-  --error-content: #272626;
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --paper: #f6f1e6;
+  --paper-raised: #efe8d8;
+  --ink: #1a1512;
+  --ink-dim: #6b5f55;
+  --ink-faint: #a39584;
+  --line: #e0d6c1;
+  --accent: #d0021b;
 }
 
-/* Dark theme */
 .dark {
-  --primary: oklch(0.922 0 0);
-  --primary-content: #272626;
-  --primary-dark: #8e8b8b;
-  --primary-light: #c0bfbf;
-
-  --secondary: oklch(0.269 0 0);
-  --secondary-content: #262726;
-  --secondary-dark: #8b8e8b;
-  --secondary-light: #bfc0bf;
-
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-
-  --copy: #fbfbfb;
-  --copy-light: #d9d8d8;
-  --copy-lighter: #a7a5a5;
-
-  --success: #a5a7a5;
-  --warning: #a7a7a5;
-  --error: #a7a5a5;
-  --success-content: #262726;
-  --warning-content: #272726;
-  --error-content: #272626;
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --paper: #0c0909;
+  --paper-raised: #141010;
+  --ink: #f0e9e0;
+  --ink-dim: #9b9084;
+  --ink-faint: #5f5650;
+  --line: #2a201d;
+  --accent: #ff1f1f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-tektur: var(--font-tektur);
-  --font-noto: var(--font-noto);
-  --font-yesteryear: var(--font-yesteryear);
-  --font-monsieurladoulaise: var(--font-monsieurladoulaise);
-  --font-audiowide: var(--font-audiowide);
-
-  /* Map CSS variables to Tailwind colors */
-  --color-primary: var(--primary);
-  --color-primary-content: var(--primary-content);
-  --color-primary-dark: var(--primary-dark);
-  --color-primary-light: var(--primary-light);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-content: var(--secondary-content);
-  --color-secondary-dark: var(--secondary-dark);
-  --color-secondary-light: var(--secondary-light);
-
-  --color-border: var(--border);
-
-  --color-copy: var(--copy);
-  --color-copy-light: var(--copy-light);
-  --color-copy-lighter: var(--copy-lighter);
-
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-
-  --color-success-content: var(--success-content);
-  --color-warning-content: var(--warning-content);
-  --color-error-content: var(--error-content);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-line: var(--line);
   --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  /* fallback fade for browsers without the View Transitions API */
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border: 2px solid var(--paper);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ── Dark-mode circular reveal (View Transitions API) ────────── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* ── Grain overlay ───────────────────────────────────────────── */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 9s steps(6) infinite;
+}
+
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -2%); }
+  80% { transform: translate(3%, 3%); }
+}
+
+/* ── Availability pulse ──────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 50%, transparent); }
+  60% { box-shadow: 0 0 0 7px transparent; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.2s ease-out infinite;
+}
+
+/* ── Underline link ──────────────────────────────────────────── */
+.u-link {
+  position: relative;
+  display: inline-block;
+}
+
+.u-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.u-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Rolling nav link (text flips up, red copy underneath) ───── */
+.roll {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.4em;
+  line-height: 1.4em;
+}
+
+.roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.roll:hover .roll-inner {
+  transform: translateY(-1.4em);
+}
+
+.roll-inner > span:last-child {
+  color: var(--accent);
+}
+
+/* ── Marquee ─────────────────────────────────────────────────── */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ── Footer letters ──────────────────────────────────────────── */
+.footer-letter {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+
+.footer-letter:hover {
+  color: var(--accent);
+  transform: translateY(-0.08em) skewX(-8deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
