@@ -17,7 +17,35 @@ Everything you know about Priyanshu:
 
 type ChatMessage = { role: string; content: string };
 
+// 10 questions per visitor per day, then point them at a 15-min meet.
+const MAX_QUESTIONS = 10;
+const WINDOW_MS = 24 * 60 * 60 * 1000;
+const hits = new Map<string, { count: number; reset: number }>();
+
+const LIMIT_REPLY =
+  "that's 10 questions — my whiskers need a break. if you want the full story, book a 15-min meet with priyanshu: devgambo.work@gmail.com. he talks way more than me. meow.";
+
+function isRateLimited(req: Request) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
+  const now = Date.now();
+  // keep the map from growing unbounded on long-lived servers
+  if (hits.size > 5000) {
+    for (const [k, v] of hits) if (now > v.reset) hits.delete(k);
+  }
+  const h = hits.get(ip);
+  if (!h || now > h.reset) {
+    hits.set(ip, { count: 1, reset: now + WINDOW_MS });
+    return false;
+  }
+  h.count++;
+  return h.count > MAX_QUESTIONS;
+}
+
 export async function POST(req: Request) {
+  if (isRateLimited(req)) {
+    return NextResponse.json({ error: LIMIT_REPLY, limited: true }, { status: 429 });
+  }
+
   let messages: ChatMessage[];
   try {
     const body = await req.json();

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { SendHorizontal, X } from "lucide-react";
+import { CalendarClock, SendHorizontal, X } from "lucide-react";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -12,13 +12,66 @@ const GREETING: Msg = {
     "meow — i'm lily. i know everything about priyanshu. projects, internships, the hackathon he won... ask away.",
 };
 
+const MAX_QUESTIONS = 10;
+const QUOTA_KEY = "lily-quota";
+
+const LIMIT_MSG: Msg = {
+  role: "assistant",
+  content:
+    "that's 10 questions — my whiskers need a break. if you want the full story, book a 15-min meet with priyanshu. he talks way more than me. meow.",
+};
+
+const BOOKING_HREF = `mailto:devgambo.work@gmail.com?subject=${encodeURIComponent(
+  "15-min meet with Priyanshu"
+)}&body=${encodeURIComponent(
+  "Hey Priyanshu,\n\nLily sent me — I'd love to grab 15 minutes with you.\n\nA few times that work for me:\n- \n- \n\nThanks!"
+)}`;
+
+function readQuota() {
+  try {
+    const raw = localStorage.getItem(QUOTA_KEY);
+    if (!raw) return 0;
+    const q = JSON.parse(raw) as { count: number; reset: number };
+    if (Date.now() > q.reset) {
+      localStorage.removeItem(QUOTA_KEY);
+      return 0;
+    }
+    return q.count;
+  } catch {
+    return 0;
+  }
+}
+
+function bumpQuota() {
+  try {
+    const raw = localStorage.getItem(QUOTA_KEY);
+    const q =
+      raw && Date.now() <= JSON.parse(raw).reset
+        ? (JSON.parse(raw) as { count: number; reset: number })
+        : { count: 0, reset: Date.now() + 24 * 60 * 60 * 1000 };
+    q.count++;
+    localStorage.setItem(QUOTA_KEY, JSON.stringify(q));
+    return q.count;
+  } catch {
+    return 0;
+  }
+}
+
 export default function LilyChat() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([GREETING]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [limited, setLimited] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (readQuota() >= MAX_QUESTIONS) {
+      setLimited(true);
+      setMessages((m) => (m.length === 1 ? [...m, LIMIT_MSG] : m));
+    }
+  }, []);
 
   // open with "C" (unless typing somewhere), close with Escape; Lily's click also opens
   useEffect(() => {
@@ -50,7 +103,7 @@ export default function LilyChat() {
   async function send(e: React.FormEvent) {
     e.preventDefault();
     const text = input.trim();
-    if (!text || busy) return;
+    if (!text || busy || limited) return;
     const next: Msg[] = [...messages, { role: "user", content: text }];
     setMessages(next);
     setInput("");
@@ -62,10 +115,19 @@ export default function LilyChat() {
         body: JSON.stringify({ messages: next }),
       });
       const data = await res.json();
+      if (res.status === 429 || data.limited) {
+        setLimited(true);
+        setMessages((m) => [...m, LIMIT_MSG]);
+        return;
+      }
       setMessages((m) => [
         ...m,
         { role: "assistant", content: res.ok ? data.reply : (data.error ?? "something broke. meow.") },
       ]);
+      if (res.ok && bumpQuota() >= MAX_QUESTIONS) {
+        setLimited(true);
+        setMessages((m) => [...m, LIMIT_MSG]);
+      }
     } catch {
       setMessages((m) => [...m, { role: "assistant", content: "connection hiccup — try again?" }]);
     } finally {
@@ -117,23 +179,32 @@ export default function LilyChat() {
             )}
           </div>
 
-          <form onSubmit={send} className="flex items-center gap-2 border-t border-line px-3 py-2">
-            <input
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="ask lily about priyanshu…"
-              className="min-w-0 flex-1 bg-transparent py-1 text-xs text-ink placeholder:text-ink-faint focus:outline-none"
-            />
-            <button
-              type="submit"
-              disabled={busy || !input.trim()}
-              aria-label="Send"
-              className="cursor-pointer text-ink-faint transition-colors hover:text-accent disabled:opacity-40"
+          {limited ? (
+            <a
+              href={BOOKING_HREF}
+              className="flex items-center justify-center gap-2 border-t border-accent bg-accent px-3 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-paper transition-opacity hover:opacity-90"
             >
-              <SendHorizontal size={14} />
-            </button>
-          </form>
+              <CalendarClock size={14} /> Book a 15-min meet
+            </a>
+          ) : (
+            <form onSubmit={send} className="flex items-center gap-2 border-t border-line px-3 py-2">
+              <input
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="ask lily about priyanshu…"
+                className="min-w-0 flex-1 bg-transparent py-1 text-xs text-ink placeholder:text-ink-faint focus:outline-none"
+              />
+              <button
+                type="submit"
+                disabled={busy || !input.trim()}
+                aria-label="Send"
+                className="cursor-pointer text-ink-faint transition-colors hover:text-accent disabled:opacity-40"
+              >
+                <SendHorizontal size={14} />
+              </button>
+            </form>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
