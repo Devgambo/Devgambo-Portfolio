@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Asterisk } from "lucide-react";
 import { techLogos } from "@/data/resume";
 
 export default function Marquee() {
@@ -11,11 +10,8 @@ export default function Marquee() {
             {techLogos.map((item) => (
               <span
                 key={item.name}
-                className={`flex items-center gap-2.5 pr-4 text-xs uppercase tracking-[0.2em] transition-colors ${
-                  item.src ? "text-ink-dim hover:text-ink" : "text-accent"
-                }`}
+                className="flex items-center gap-2.5 px-5 text-xs uppercase tracking-[0.2em] text-ink-dim transition-colors hover:text-ink"
               >
-                <Asterisk size={14} className="text-accent" />
                 {item.src && (
                   <Image
                     src={item.src}

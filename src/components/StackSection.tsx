@@ -7,8 +7,8 @@ export default function StackSection() {
       <div className="space-y-5">
         {stack.map((g, i) => (
           <Reveal key={g.group} delay={i * 0.04}>
-            <div className="grid gap-2 border-b border-line pb-4 md:grid-cols-[180px_1fr] md:gap-8">
-              <p className="text-xs uppercase tracking-[0.2em] text-ink-faint">{g.group}</p>
+            <div className="group grid gap-2 border-b border-line pb-4 transition-colors duration-300 hover:border-accent/40 md:grid-cols-[180px_1fr] md:gap-8">
+              <p className="text-xs uppercase tracking-[0.2em] text-ink-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent">{g.group}</p>
               <p className="flex flex-wrap gap-x-1 gap-y-2 text-sm leading-relaxed">
                 {g.items.map((item, j) => (
                   <span key={item} className="text-ink-dim">

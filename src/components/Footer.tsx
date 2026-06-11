@@ -47,7 +47,7 @@ export default function Footer() {
           {profile.location} · <LocalTime />
         </p>
         <p>
-          built <span className="text-accent">without fear</span> · Next.js · GSAP
+          built with <span className="text-accent">Next.js · GSAP · Three.js</span>
         </p>
       </div>
     </footer>

@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { links } from "@/data/resume";
 import Reveal from "./Reveal";
 import Magnetic from "./Magnetic";
+import SocialIcon from "./SocialIcon";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -52,8 +53,9 @@ export default function ContactSection() {
           </p>
           <ul className="mt-6 space-y-2.5 text-sm">
             {links.map((l) => (
-              <li key={l.label} className="flex items-baseline gap-4">
-                <span className="w-20 text-xs uppercase tracking-[0.2em] text-ink-faint">
+              <li key={l.label} className="flex items-center gap-4">
+                <span className="flex w-24 items-center gap-2 text-xs uppercase tracking-[0.2em] text-ink-faint">
+                  <SocialIcon label={l.label} size={13} />
                   {l.label}
                 </span>
                 <a

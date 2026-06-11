@@ -8,9 +8,9 @@ export default function RecognitionSection() {
   return (
     <div>
       <Reveal>
-        <div className="border border-accent/30 bg-paper-raised p-5 md:p-8">
+        <div className="group border border-accent/30 bg-paper-raised p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[6px_6px_0_0_var(--accent)] md:p-8">
           <p className="mb-2 flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-accent">
-            <Trophy size={13} /> The big one
+            <Trophy size={13} className="transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110" /> The big one
           </p>
           <h3 className="font-serif text-2xl italic tracking-tight md:text-4xl">{headline.title}</h3>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-dim">{headline.detail}</p>

@@ -5,10 +5,12 @@ import Image from "next/image";
 import { MoveRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
-import { profile } from "@/data/resume";
+import { profile, links } from "@/data/resume";
+import HeroCanvas from "./hero/HeroCanvas";
+import SocialIcon from "./SocialIcon";
+import Marquee from "./Marquee";
 
-gsap.registerPlugin(useGSAP, SplitText);
+gsap.registerPlugin(useGSAP);
 
 export default function Hero() {
   const scope = useRef<HTMLElement>(null);
@@ -16,42 +18,44 @@ export default function Hero() {
   useGSAP(
     () => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      document.fonts.ready.then(() => {
-        const split = SplitText.create(".hero-title", {
-          type: "chars,lines",
-          mask: "lines",
-        });
 
-        gsap
-          .timeline({ defaults: { ease: "power4.out" } })
-          .from(split.chars, {
-            yPercent: 115,
-            duration: 1,
-            stagger: 0.02,
-          })
-          .from(
-            ".hero-fade",
-            { opacity: 0, y: 22, duration: 0.8, stagger: 0.1 },
-            "-=0.55"
-          )
-          .from(
-            ".hero-photo",
-            { opacity: 0, scale: 0.92, rotate: 8, duration: 0.9 },
-            "<"
-          )
-          .from(
-            ".hero-rule",
-            { scaleX: 0, transformOrigin: "left center", duration: 0.9 },
-            "<"
-          );
+      gsap
+        .timeline({ defaults: { ease: "power4.out" } })
+        .from(".hero-photo", {
+          rotateY: 85,
+          transformPerspective: 900,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        })
+        .from(
+          ".hero-fade",
+          { opacity: 0, y: 22, duration: 0.8, stagger: 0.1 },
+          "-=0.6"
+        )
+        .from(
+          ".hero-rule",
+          { scaleX: 0, transformOrigin: "left center", duration: 0.9 },
+          "<"
+        );
+
+      // idle float on the photo
+      gsap.to(".hero-photo", {
+        y: 9,
+        duration: 3.2,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
       });
     },
     { scope }
   );
 
   return (
-    <section ref={scope} id="top" className="relative">
-      <div className="mx-auto w-full max-w-4xl px-5 pb-12 pt-28 md:px-8 md:pt-32">
+    <section ref={scope} id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
+      <HeroCanvas />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-5 pb-10 pt-24 md:px-8">
         <div className="flex flex-col-reverse gap-8 md:flex-row md:items-end md:justify-between">
           <div className="min-w-0">
             <p className="hero-fade mb-4 flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-ink-dim">
@@ -60,7 +64,7 @@ export default function Hero() {
               {profile.location}
             </p>
 
-            <h1 className="hero-title font-serif text-[12vw] leading-[0.95] tracking-tight md:text-[5.4rem]">
+            <h1 className="font-serif text-[12vw] leading-[0.95] tracking-tight md:text-[5.6rem]">
               Priyanshu
               <br />
               <span className="italic text-ink-dim">Kumar</span> Rai
@@ -72,7 +76,7 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="hero-photo group relative w-36 shrink-0 self-start rotate-3 transition-transform duration-500 hover:rotate-0 md:w-44 md:self-auto">
+          <div className="hero-photo group relative w-36 shrink-0 self-start rotate-3 md:w-44 md:self-auto">
             <div className="absolute inset-0 translate-x-2 translate-y-2 border border-accent transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1" />
             <Image
               src="/pfp.png"
@@ -82,9 +86,6 @@ export default function Hero() {
               priority
               className="relative aspect-[4/5] w-full object-cover grayscale transition-[filter] duration-500 group-hover:grayscale-0"
             />
-            <span className="absolute -bottom-3 -left-3 -rotate-6 bg-accent px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-paper">
-              Without fear
-            </span>
           </div>
         </div>
 
@@ -108,6 +109,25 @@ export default function Hero() {
             <dd className="text-accent">Winner — HackToFuture 4.0</dd>
           </div>
         </dl>
+
+        <div className="hero-fade mt-7 flex items-center gap-5">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              aria-label={l.label}
+              target={l.href.startsWith("mailto") ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              className="text-ink-faint transition-all duration-300 hover:-translate-y-0.5 hover:text-accent"
+            >
+              <SocialIcon label={l.label} size={17} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative z-10">
+        <Marquee />
       </div>
     </section>
   );

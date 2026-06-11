@@ -231,7 +231,6 @@ export const education = [
 ];
 
 export const techLogos: { name: string; src?: string }[] = [
-  { name: "Man without fear" },
   { name: "React", src: "/tech-stack/React.png" },
   { name: "Next.js", src: "/tech-stack/Next.js.png" },
   { name: "TypeScript", src: "/tech-stack/TypeScript.png" },
